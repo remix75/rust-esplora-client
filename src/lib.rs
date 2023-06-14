@@ -1,4 +1,4 @@
-//! An extensible blocking/async Esplora client
+//! An extensible blocking/asynr Esplora client
 //!
 //! This library provides an extensible blocking and
 //! async Esplora client to query Esplora's backend.
@@ -181,6 +181,9 @@ pub enum Error {
     HeaderHeightNotFound(u32),
     /// Header hash not found
     HeaderHashNotFound(BlockHash),
+    
+    /// Bitcoin RPC Error
+    RPCErrorCode(bitcoin_rpc_errors::RPCErrorCode),
 }
 
 impl fmt::Display for Error {
