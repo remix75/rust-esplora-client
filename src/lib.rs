@@ -183,7 +183,7 @@ pub enum Error {
     HeaderHashNotFound(BlockHash),
     
     /// Bitcoin RPC Error
-    RPCErrorCode(bitcoin_rpc_errors::RPCErrorCode),
+    RPCError(bitcoin_rpc_errors::Error),
 }
 
 impl fmt::Display for Error {
