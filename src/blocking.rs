@@ -250,9 +250,8 @@ impl BlockingClient {
             Ok(_) => Ok(()), // We do not return the txid?
             Err(ureq::Error::Status(c, r)) => {
                 let message: String = r.into_string()?;
-                let result: Result<bitcoin_rpc_errors::Error, _> = message.parse();
 
-                match result {
+                match message.parse::<bitcoin_rpc_errors::Error>() {
                     Ok(error) => Err(Error::RPCError(error)),
                     Err(_) => Err(Error::HttpResponse(c)),
                 }
